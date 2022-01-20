@@ -2,22 +2,40 @@
 console.log("working");
 
 // Add a Map Object
-// Create the map object with a center and zoom level. [40.7, -94.5]
-let map = L.map('mapid').setView([34.0522, -118.2437], 14);
+// Create the map object with a center and zoom level. [40.7, -94.5] or [34.0522, -118.2437]
+let map = L.map('mapid').setView([40.7, -94.5], 4);
 
 //  Add a marker to the map for Los Angeles, California.
 // let marker = L.marker([34.0522, -118.2437]).addTo(map);
+
+// Get data from cities.js
+let cityData = cities;
+
+// Loop through the cities array and create one marker for each city.
+cityData.forEach(function(city) {
+    console.log(city)
+    //L.marker(city.location)
+    L.circleMarker(city.location, {
+        radius: city.population/200000,
+        fillColor: 'orange',
+        color: "orange",
+        lineweight: 4
+    })
+    .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")
+    .addTo(map);
+});
 
 // Add a circle to the map for Los Angeles
 // L.circle([34.0522, -118.2437], {
 //     radius: 100
 //  }).addTo(map);
 
-L.circleMarker([34.0522, -118.2437], {
+// circleMarker to the map for Los Angeles
+/* L.circleMarker([34.0522, -118.2437], {
     radius: 300,
     color: "black",
     fillColor: '#ffffa1'
-}).addTo(map);
+}).addTo(map); */
 
 
 // Add a Tile Layer for Our Map
