@@ -1,8 +1,8 @@
-// Create the map object with center and zoom level.
+/* // Create the map object with center and zoom level.
 let map = L.map("mapid", {
   center: [40.7, -94.5],
   zoom: 4
-});
+}); */
 
 // We create the tile layer that will be the background of our map.
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -35,7 +35,7 @@ let map = L.map('mapid', {
 L.control.layers(baseMaps).addTo(map);
 
 // Accessing the airport GeoJSON URL
-let airportData = "https://raw.githubusercontent.com/julieher/Mapping_Earthquakes//GeoJSON_Multiple_Points/majorAirports.json";
+let airportData = "https://raw.githubusercontent.com/julieher/Mapping_Earthquakes/Mapping_GeoJSON_Points/GeoJSON_Multiple_Points/majorAirports.json";
 
 // Grabbing our GeoJSON data.
 d3.json(airportData).then(function(data) {
